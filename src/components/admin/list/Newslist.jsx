@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { productsDelete } from "../../../features/productsSlice";
+import { useDispatch } from "react-redux";
+import {productsDelete} from "../../../features/productsSlice";
 import EditProduct from "../EditProduct";
 
 export default function ProductsList() {
@@ -12,49 +13,75 @@ export default function ProductsList() {
   const { items } = useSelector((state) => state.products);
 
   const rows =
-  items &&
-  items.map((item) => {
-    return {
-      id: item._id,
-      imageUrl: item.image.url,
-      pName: item.name,
-      pDesc: item.desc,
-      price: item.price.toLocaleString(),
+    items &&
+    items.map((item) => {
+      return {
+        id: item._id,
+        imageUrl: item.image.url,
+        pName: item.name,
+        pDesc: item.desc,
+        price: item.price.toLocaleString(),
       };
-  });
+    });
+
+    const handleDelete = (id) => {
+      dispatch(productsDelete(id)); 
+    };
+  
 
   const columns = [
-    { field: "id", headerName: "ID", width: 220 },
+    {
+      field: "id",
+      headerName: "ID",
+      width: 220
+    },
     {
       field: "imageUrl",
       headerName: "Image",
       width: 80,
-      renderCell: (params) => (
-        <ImageContainer>
-          <img src={params.row.imageUrl} alt="" />
-        </ImageContainer>
-      ),
+      renderCell: (params) => {
+        return (
+          <ImageContainer>
+            <img src={params.row.imageUrl} alt="" />
+          </ImageContainer>
+        );
+      },
     },
-    { field: "pName", headerName: "Name", width: 130 },
-    { field: "pDesc", headerName: "Description", width: 130 },
-    { field: "price", headerName: "Price", width: 80 },
+    {
+      field: "pName",
+      headerName: "Name",
+      width: 130
+    },
+    {
+      field: "pDesc",
+      headerName: "Description",
+      width: 130
+    },
+    {
+      field: "price",
+      headerName: "Price",
+      width: 80
+    },
     {
       field: "actions",
       headerName: "Actions",
       sortable: false,
       width: 170,
-      renderCell: (params) => (
-        <Actions>
-          <Delete onClick={() => handleDelete(params.row.id)}>Delete</Delete>
-          <EditProduct prodId={params.row.id} />
-          <View onClick={() => navigate(`/product/${params.row.id}`)}>View</View>
-        </Actions>
-      ),
+      renderCell: (params) => {
+        return (
+          <Actions>
+            <Delete onClick={() => handleDelete(params.row.id)}>Delete</Delete>
+            <EditProduct prodId = {params.row.id} />
+            <View onClick={() => navigate(`/product/${params.row.id}`)}>
+              View
+            </View>
+          </Actions>
+        );
+      },
     },
   ];
-  const handleDelete = (id) => {
-    dispatch(productsDelete(id));
-  };
+
+
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -90,21 +117,10 @@ const Actions = styled.div`
   }
 `;
 
-const buttonStyles = `
-  border: none;
-  outline: none;
-  padding: 3px 5px;
-  color: white;
-  border-radius: 3px;
-  cursor: pointer;
-`;
-
 const Delete = styled.button`
-  ${buttonStyles}
   background-color: rgb(255, 77, 73);
 `;
 
 const View = styled.button`
-  ${buttonStyles}
   background-color: rgb(114, 225, 40);
 `;

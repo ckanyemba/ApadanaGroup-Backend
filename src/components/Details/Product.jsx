@@ -1,103 +1,117 @@
-import {setHeaders, url} from "../../features/api";
+import { useState, useEffect } from "react";
+import { setHeaders, url } from "../../features/api";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Product = () => {
-    const params = useParams();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const params = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const [product, setProduct] = useState({});
-    const [loading, setLoading] = useState(false);
+  const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        setLoading(true);
-        async function fetchData() {
-            try {
-                const res = await axios.get(
-                    `${url}/products/find/${params.id}`,
-                    setHeaders()
-                );
+  useEffect(() => {
+    setLoading(true);
+    async function fetchData() {
+      try {
+        const res = await axios.get(
+          `${url}/products/find/${params.id}`,
+          setHeaders()
+        );
 
-                setProduct(res.data);
-            } catch(err) {
-                console.log(err);
+        setProduct(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+      setLoading(false);
+    }
 
-            }
-            setLoading(false);
-        }
-        
-        fetchData();
-    }, []);
+    fetchData();
+  }, []);
 
-    const handleAddToCart = (product) => {
-        dispatch(addToCart(product));
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
 
-        navigate("/cart");
-    };
+    navigate("/cart");
+  };
 
-    return (
-        <StyledProduct>
-            <ProductContainer>
-                {loading ? (
-                    <p>Loading...</p>
-                ) : (
-                 <>
-                 <ImageContainer>
-                    <img src={product.image?.url} alt="product" />
-                 </ImageContainer>
-                 <h3>{product.name}</h3>
-                 <p><span>Brand:</span>{product.brand}</p>
-                 <p><span>Description:</span>{product.desc}</p>
-                 <Prize>${product.prize?.toLocaleString()}</Prize>
-                 <button className="product-add-to-cart" onClick={() => handleAddToCart()}>
-                    Add To Cart
-                 </button>
-                 </>   
-                )}
-            </ProductContainer>
-        </StyledProduct>
-    );
+  return (
+    <StyledProduct>
+      <ProductContainer>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <ImageContainer>
+              <img src={product.image?.url} alt="product" />
+            </ImageContainer>
+            <h3>{product.name}</h3>
+            <p>
+              <span>Brand:</span>
+              {product.brand}
+            </p>
+            <p>
+              <span>Description:</span>
+              {product.desc}
+            </p>
+            <Price>
+              ${product.prize?.toLocaleString()}
+            </Price>
+            <button
+              className="product-add-to-cart"
+              onClick={() => handleAddToCart()}
+            >
+              Add To Cart
+            </button>
+          </>
+        )}
+      </ProductContainer>
+    </StyledProduct>
+  );
 };
 
 export default Product;
 
 const StyledProduct = styled.div`
-    margin: 3rem;
-    display: flex;
-    justify-content: center;
+  margin: 3rem;
+  display: flex;
+  justify-content: center;
 `;
 
 const ProductContainer = styled.div`
-max-width: 500px;
-width: 100%;
-height: auto;
-display: flex;
-box-shadow: rgba(100,100, 111, 0.2) 0px 7px 29px 0px;
-border-radius: 5px;
-padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 5px;
+  padding: 2rem;
 `;
 
 const ImageContainer = styled.div`
-flex: 1;
-img {
+  flex: 1;
+  img {
     width: 100%;
-}
+  }
 `;
 
 const ProductDetails = styled.div`
-    flex: 2;
-    margin-left: 2rem;
-    h3 {
-        font-size: 35px;
-    }
-    p span {
-        font-weight: bold;
-    }
+  flex: 2;
+  margin-left: 2rem;
+  h3 {
+    font-size: 35px;
+  }
+  p span {
+    font-weight: bold;
+  }
 `;
 
 const Price = styled.div`
-    margin: 1rem 0;
-    font-size: 25px;
+  margin: 1rem 0;
+  font-size: 25px;
 `;

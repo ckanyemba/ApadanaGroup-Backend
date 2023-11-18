@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import { Outlet, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { faUsers, faStore,  faClipboard, faTachometer} from "react-icons/fa";
+import {
+  FaUsers,
+  FaStore,
+  FaClipboard,
+  FaTachometerAlt,
+  FaFacebook,
+  FaCalendar,
+  FaNewspaper,
+} from "react-icons/fa";
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.auth);
@@ -18,7 +26,7 @@ const Dashboard = () => {
           }
           to="/admin/summary"
         >
-          <faTachometer/> Summary
+          <FaTachometerAlt /> Summary
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -26,7 +34,7 @@ const Dashboard = () => {
           }
           to="/admin/products"
         >
-          Products
+          <FaStore /> Products
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -34,7 +42,7 @@ const Dashboard = () => {
           }
           to="/admin/orders"
         >
-          Orders
+          <FaClipboard /> Orders
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -42,13 +50,31 @@ const Dashboard = () => {
           }
           to="/admin/users"
         >
-          Users
+          <FaUsers /> Users
         </NavLink>
-        <NavLink>
-          Socials
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "link-active" : "link-inactive"
+          }
+          to="/admin/articles"
+        >
+          <FaNewspaper /> Articles
         </NavLink>
-        <NavLink>
-          Calender
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "link-active" : "link-inactive"
+          }
+          to="/admin/socials"
+        >
+          <FaFacebook /> Socials
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "link-active" : "link-inactive"
+          }
+          to="/admin/calendar"
+        >
+          <FaCalendar /> Calendar
         </NavLink>
       </SideNav>
       <Content>
@@ -86,6 +112,14 @@ const SideNav = styled.div`
     text-decoration: none;
     margin-bottom: 1rem;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+
+    svg {
+      margin-right: 0.5rem;
+      font-size: 18px;
+    }
   }
 `;
 

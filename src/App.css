@@ -10,7 +10,7 @@
 /* Not Found */
 .not-found {
   display: flex;
-  flex-direction: column;
+  flex-direction: left;
   align-items: center;
   justify-content: center;
   color: rgb(68, 68, 68);
@@ -29,7 +29,7 @@
   position: sticky;
   top: 0;
   height: 70px;
-  background: rgb(34, 111, 173);
+  background: rgb(199, 18, 18);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,7 +40,7 @@
   color: white;
 }
 .nav-bar h2 {
-  font-size: 40px;
+  font-size: 20px;
 }
 .nav-bag {
   display: flex;
@@ -108,18 +108,24 @@
   font-size: 20px;
   font-weight: 700;
 }
-.product button {
+.product button, .product-add-cart {
   width: 100%;
   height: 40px;
   border-radius: 5px;
   margin-top: 2rem;
   font-weight: 400;
   letter-spacing: 1.15px;
-  background-color: #4b70e2;
+  background-color: #060709;
   color: #f9f9f9;
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.product-add-to-cart {
+  width: auto;
+  padding: 0.2rem;
+  margin-top: 0;
 }
 
 /* Cart */
@@ -248,7 +254,7 @@
   border-radius: 5px;
   font-weight: 400;
   letter-spacing: 1.15px;
-  background-color: #4b70e2;
+  background-color: #161719;
   color: #f9f9f9;
   border: none;
   outline: none;
@@ -256,8 +262,8 @@
 }
 
 .cart-checkout .cart-login {
-  background-color: yellow;
-  color: black;
+  background-color: rgba(255, 51, 0, 0.736);
+  color: rgba(0, 0, 0, 0.769);
 }
 
 .continue-shopping,
@@ -287,11 +293,237 @@
 /* Admin */
 
 .link-active {
-  color: #4b70e2;
+  color: #e2804b;
+  border-left: 3px solid #e2764b;
+  padding-left: 5px;
+  border-radius: 2px;
 }
 .link-inactive {
   color: rgb(97, 97, 97);
 }
+
+/* App.css */
+
+/* Add styles for the About component */
+
+.about-background-image{
+  background-image: url('https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Add your image path here */
+  background-size: 100% 100%; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center; /* Align text to the center */
+  color: white; /* Set text color to contrast with the background image */
+}
+
+.about-heading {
+  color: #333;
+  font-weight: bold; /* Make all headings bold */
+}
+
+.about-text {
+  color: #555;
+  line-height: 1.6;
+}
+
+.map-container {
+  margin-top: 20px;
+}
+
+/* Additional styles for transparency and full justification */
+.about-container,
+.about-heading,
+.about-text,
+.map-container {
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+  padding: 20px;
+  border-radius: 8px; /* Optional: Add rounded corners for a nice visual effect */
+  text-align: justify; /* Fully justify text */
+}
+
+
+/*Contact */
+.contact-container {
+  background-image: url('https://images.unsplash.com/photo-1563906267088-b029e7101114?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  color: rgba(196, 24, 24, 0.903); /* Set the text color */
+  /* Add any other background or text styles as needed */
+  text-align: center; /* Center-align text */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left; /* Align text inside the form to the left */
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  background-color: rgba(255, 0, 0, 0.51);
+}
+
+button {
+  background-color: rgba(255, 30, 0, 0.409)5, 217, 0, 0.688;
+  color: #070606;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(179, 21, 0);
+}
+
+.reach-out-container,
+.legal-stuff-container,
+.terms-conditions-container {
+  margin-top: 30px;
+  text-align: center; /* Fully justify text */
+}
+
+/*Events PAGE*/
+/* Apply styles to the Events component */
+.events-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.events-title {
+  color: #333;
+}
+
+.events-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.events-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.events-description {
+  color: #555;
+}
+
+.events-no-data {
+  margin-top: 20px;
+  color: #777;
+}
+
+/* Events.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('https://images.unsplash.com/photo-1596474356066-bdc1f4c79bf9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  color: #5d1616; /* Set text color to white for better readability on the background image */
+}
+
+.events-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for better text readability on the background image */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.events-title {
+  color: #333;
+}
+
+.events-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.events-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.events-description {
+  color: #555;
+}
+
+.events-no-data {
+  margin-top: 20px;
+  color: #777;
+}
+
+/*GotchaBlog */
+.blog-post {
+  background-image: url('https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-size: cover;
+  background-position: center;
+  color: white; /* Text color on top of the background image */
+  padding: 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc; /* Border color */
+}
+
+.blog-title {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.blog-content {
+  font-size: 1.2em;
+}
+
+/* Gallery */
+/* Add styles for the Gallery component */
+.gallery {
+  padding: 2rem; /* Adjust the padding as needed */
+  text-align: center;
+}
+
+.gallery h1 {
+  font-size: 36px;
+  margin-bottom: 1rem;
+  color: #333; /* Adjust the color as needed */
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.image-container img {
+  width: 100%;
+  max-height: 300px; /* Adjust the max height as needed */
+  object-fit: cover;
+  border-radius: 8px; /* Optional: Add rounded corners for a nice visual effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+}
+
+/* Add any additional styles for the Gallery component as needed */
+
 
 /* Responsive */
 

@@ -17,10 +17,10 @@ const CreateProduct = () => {
   const handleProductImageUpload = (e) => {
     const file = e.target.files[0];
 
-    TransformFileData(file);
+    TransformFile(file);
   };
 
-  const TransformFileData = (file) => {
+  const TransformFile = (file) => {
     const reader = new FileReader();
 
     if (file) {
@@ -52,9 +52,8 @@ const CreateProduct = () => {
       <StyledForm onSubmit={handleSubmit}>
         <h3>Create a Product</h3>
         <input
-          id="imgUpload"
-          accept="image/*"
           type="file"
+          accept="image/"
           onChange={handleProductImageUpload}
           required
         />
@@ -108,7 +107,6 @@ const StyledForm = styled.form`
   flex-direction: column;
   max-width: 300px;
   margin-top: 2rem;
-
   select,
   input {
     padding: 7px;
@@ -117,7 +115,6 @@ const StyledForm = styled.form`
     border-radius: 5px;
     border: 1px solid rgb(182, 182, 182);
     margin: 0.3rem 0;
-
     &:focus {
       border: 2px solid rgb(0, 208, 255);
     }
