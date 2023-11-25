@@ -1,15 +1,15 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { AdminHeaders, PrimaryButton } from "./CommonStyled";
 
-const Articles = () => {
+const Galleries = () => {
   const navigate = useNavigate();
 
   return (
     <>
       <AdminHeaders>
-        <h2>Articles</h2>
+        <h2>Gallery</h2>
         <PrimaryButton
-          onClick={() => navigate("/admin/articles/create-article")}
+          onClick={() => navigate("/admin/galleries/create-gallery")}
         >
           Create
         </PrimaryButton>
@@ -19,4 +19,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default Galleries;

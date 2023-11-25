@@ -4,13 +4,13 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {productsDelete} from "../../../features/productsSlice";
-import EditProduct from "../EditProduct";
+import {galleriesDelete} from "../../../features/galleriesSlice";
+import EditGallery from "../EditGallery";
 
-export default function ProductsList() {
+export default function GalleriesList() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { items } = useSelector((state) => state.products);
+  const { items } = useSelector((state) => state.galleries);
 
   const rows =
     items &&
@@ -25,7 +25,7 @@ export default function ProductsList() {
     });
 
     const handleDelete = (id) => {
-      dispatch(productsDelete(id)); 
+      dispatch(galleriesDelete(id)); 
     };
   
 
@@ -71,8 +71,8 @@ export default function ProductsList() {
         return (
           <Actions>
             <Delete onClick={() => handleDelete(params.row.id)}>Delete</Delete>
-            <EditProduct prodId = {params.row.id} />
-            <View onClick={() => navigate(`/product/${params.row.id}`)}>
+            <EditGallery prodId = {params.row.id} />
+            <View onClick={() => navigate(`/gallery/${params.row.id}`)}>
               View
             </View>
           </Actions>

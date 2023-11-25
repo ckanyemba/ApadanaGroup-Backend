@@ -40,7 +40,6 @@ export const productsFetch = createAsyncThunk(
       }
     }
   );
-  
 
   export const productsEdit = createAsyncThunk(
     "products/productsEdit",

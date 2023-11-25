@@ -11,11 +11,11 @@ const initialState = {
   editStatus: null,
 };
 
-export const articlesFetch = createAsyncThunk(
-    "articles/articlesFetch",
+export const eventsFetch = createAsyncThunk(
+    "events/eventsFetch",
     async () => {
       try {
-        const response = await axios.get(`${url}/articles`);
+        const response = await axios.get(`${url}/events`);
         return response.data;
       } catch (error) {
         console.log(error);
@@ -23,12 +23,13 @@ export const articlesFetch = createAsyncThunk(
     }
   );
 
-  export const articlesCreate = createAsyncThunk(
-    "articles/articlesCreate",
+
+  export const eventsCreate = createAsyncThunk(
+    "events/eventsCreate",
     async (values) => {
       try {
         const response = await axios.post(
-          `${url}/articles`,
+          `${url}/events`,
           values,
           setHeaders()
         );
@@ -40,13 +41,14 @@ export const articlesFetch = createAsyncThunk(
       }
     }
   );
+  
 
-  export const articlesEdit = createAsyncThunk(
-    "articles/articlesEdit",
+  export const eventsEdit = createAsyncThunk(
+    "events/eventsEdit",
     async (values) => {
       try {
         const response = await axios.put(
-          `${url}/articles/${values.article._id}`,
+          `${url}/events/${values.event._id}`,
           values,
           setHeaders()
         );
@@ -58,12 +60,12 @@ export const articlesFetch = createAsyncThunk(
     }
   );
 
-  export const articlesDelete = createAsyncThunk(
-    "articles/articlesDelete",
+  export const eventsDelete = createAsyncThunk(
+    "events/eventsDelete",
     async (id) => {
       try {
         const response = await axios.delete(
-          `${url}/articles/${id}`, 
+          `${url}/events/${id}`, 
           setHeaders()
         );
   
@@ -76,61 +78,61 @@ export const articlesFetch = createAsyncThunk(
   );
   
 
-  const articlesSlice = createSlice({
-    name: "articles",
+  const eventsSlice = createSlice({
+    name: "events",
     initialState,
     reducers: {},
     extraReducers: {
-      [articlesFetch.pending]: (state, action) => {
+      [eventsFetch.pending]: (state, action) => {
         state.status = "pending";
       },
-      [articlesFetch.fulfilled]: (state, action) => {
+      [eventsFetch.fulfilled]: (state, action) => {
         state.items = action.payload;
         state.status = "success";
       },
-      [articlesFetch.rejected]: (state, action) => {
+      [eventsFetch.rejected]: (state, action) => {
         state.status = "rejected";
       },
-      [articlesCreate.pending]: (state, action) => {
+      [eventsCreate.pending]: (state, action) => {
         state.createStatus = "pending";
       },
-      [articlesCreate.fulfilled]: (state, action) => {
+      [eventsCreate.fulfilled]: (state, action) => {
         state.items.push(action.payload);
         state.createStatus = "success";
-        toast.success("Articles Created");
+        toast.success("Event Created");
       },
-      [articlesCreate.rejected]: (state, action) => {
+      [eventsCreate.rejected]: (state, action) => {
         state.createStatus = "rejected";
       },
-      [articlesEdit.pending]: (state, action) => {
+      [eventsEdit.pending]: (state, action) => {
         state.editStatus = "pending";
       },
-      [articlesEdit.fulfilled]: (state, action) => { 
-        const updatedArticles = state.items.map((article) =>
-        article._id === action.payload._id ? action.payload : article
+      [eventsEdit.fulfilled]: (state, action) => { 
+        const updatedEvents = state.items.map((event) =>
+        event._id === action.payload._id ? action.payload : event
         );  
-        state.items = updatedArticles;
+        state.items = updatedEvents;
         state.editStatus = "success";
-        toast.info("Articles Edited");
+        toast.info("Event Edited");
       },
-      [articlesEdit.rejected]: (state, action) => {
+      [eventsEdit.rejected]: (state, action) => {
         state.editStatus = "rejected";
       },
-      [articlesDelete.pending]: (state, action) => {
+      [eventsDelete.pending]: (state, action) => {
         state.deleteStatus = "pending";
       },
-      [articlesDelete.fulfilled]: (state, action) => {
+      [eventsDelete.fulfilled]: (state, action) => {
         const newList = state.items.filter(
           (item) => item._id !== action.payload._id
         );
         state.items = newList;
         state.deleteStatus = "success";
-        toast.error("Articles Deleted"); // Fix typo here
+        toast.error("Event Deleted"); // Fix typo here
       },      
-      [articlesDelete.rejected]: (state, action) => {
+      [eventsDelete.rejected]: (state, action) => {
         state.deleteStatus = "rejected";
       },
     },
   });
 
-export default articlesSlice.reducer;
+export default eventsSlice.reducer;

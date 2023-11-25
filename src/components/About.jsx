@@ -1,8 +1,20 @@
 import React from 'react';
 
+const backgroundImageUrl = 'https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?q=80&w=1827&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
+
 const About = () => {
+
+    const backgroundStyle = {
+        backgroundImage: `url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        minHeight: '100vh', // Make sure the content covers the full viewport height
+      };
+
     return (
-        <div className="about-background-image">
+        <div className="about-background-image" style={backgroundStyle}>
         <div className="about-container">
             <h1 className="about-heading">About Us:</h1>
             {/* Your existing content */}

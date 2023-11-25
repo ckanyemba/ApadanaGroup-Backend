@@ -2,14 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { addToCart } from "../features/cartSlice";
 import { Link } from  "react-router-dom";
-//import { useGetAllProductsQuery } from "../features/productsApi";
+
+
+const backgroundImageUrl = 'https://images.unsplash.com/photo-1605478328994-f93e98217da7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
 const Home = () => {
-    //const { data, error, isLoading } = useGetAllProductsQuery();
     const { items: data, status } = useSelector((state) => state.products);
-    /*const auth = useSelector((state) => state.auth);
-
-    console.log(auth);*/
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -19,8 +17,16 @@ const Home = () => {
         navigate("/cart");
     };
 
+    const backgroundStyle = {
+        backgroundImage: `url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        minHeight: '100vh', // Make sure the content covers the full viewport height
+      };
+
     return (
-        <div className="home-container">
+        <div className="home-container" style={backgroundStyle}>
             {status === "success" ? (
                 <>
                     <h2>New Arrivals</h2>

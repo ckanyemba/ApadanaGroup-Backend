@@ -9,6 +9,8 @@ import {
   FaFacebook,
   FaCalendar,
   FaNewspaper,
+  FaTwitch,
+  FaFaucet,
 } from "react-icons/fa";
 
 const Dashboard = () => {
@@ -35,6 +37,22 @@ const Dashboard = () => {
           to="/admin/products"
         >
           <FaStore /> Products
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "link-active" : "link-inactive"
+          }
+          to="/admin/events"
+        >
+          <FaTwitch /> Events
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "link-active" : "link-inactive"
+          }
+          to="/admin/galleries"
+        >
+          <FaFaucet /> Gallery
         </NavLink>
         <NavLink
           className={({ isActive }) =>

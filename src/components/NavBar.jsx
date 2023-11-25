@@ -13,16 +13,24 @@ const NavBar = () => {
 
   return (
     <nav className="nav-bar">
+      <div className="nav-logo">
+      <img
+          src="https://res.cloudinary.com/dyhkqsixw/image/upload/v1700748700/black_logo_alone_cclvex.png"
+          alt="Logo"
+          style={{ height: "70px", width: "70px", border: "12px solid #130808"  }} // Adjust the height and width as needed
+        />
+        <h2>GOTHRONE</h2>
+        </div>
       <Link to="/">
         <h2>Shop</h2>
       </Link>
-      <Link to="/gallery">
-        <h2>Galley</h2>
+      <Link to="/forgallery">
+        <h2>Gallery</h2>
       </Link>
-      <Link to="/articles">
+      <Link to="/forarticles">
         <h2>Articles</h2>
       </Link>
-      <Link to="/events">
+      <Link to="/posters">
         <h2>Events</h2>
       </Link>
       <Link to="/about">

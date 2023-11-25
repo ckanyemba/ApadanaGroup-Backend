@@ -11,11 +11,11 @@ const initialState = {
   editStatus: null,
 };
 
-export const articlesFetch = createAsyncThunk(
-    "articles/articlesFetch",
+export const galleriesFetch = createAsyncThunk(
+    "galleries/galleriesFetch",
     async () => {
       try {
-        const response = await axios.get(`${url}/articles`);
+        const response = await axios.get(`${url}/galleries`);
         return response.data;
       } catch (error) {
         console.log(error);
@@ -23,12 +23,12 @@ export const articlesFetch = createAsyncThunk(
     }
   );
 
-  export const articlesCreate = createAsyncThunk(
-    "articles/articlesCreate",
+  export const galleriesCreate = createAsyncThunk(
+    "galleries/galleriesCreate",
     async (values) => {
       try {
         const response = await axios.post(
-          `${url}/articles`,
+          `${url}/galleries`,
           values,
           setHeaders()
         );
@@ -41,12 +41,12 @@ export const articlesFetch = createAsyncThunk(
     }
   );
 
-  export const articlesEdit = createAsyncThunk(
-    "articles/articlesEdit",
+  export const galleriesEdit = createAsyncThunk(
+    "galleries/galleriesEdit",
     async (values) => {
       try {
         const response = await axios.put(
-          `${url}/articles/${values.article._id}`,
+          `${url}/galleries/${values.gallery._id}`,
           values,
           setHeaders()
         );
@@ -58,12 +58,12 @@ export const articlesFetch = createAsyncThunk(
     }
   );
 
-  export const articlesDelete = createAsyncThunk(
-    "articles/articlesDelete",
+  export const galleriesDelete = createAsyncThunk(
+    "galleries/galleriesDelete",
     async (id) => {
       try {
         const response = await axios.delete(
-          `${url}/articles/${id}`, 
+          `${url}/galleries/${id}`, 
           setHeaders()
         );
   
@@ -76,61 +76,61 @@ export const articlesFetch = createAsyncThunk(
   );
   
 
-  const articlesSlice = createSlice({
-    name: "articles",
+  const galleriesSlice = createSlice({
+    name: "galleries",
     initialState,
     reducers: {},
     extraReducers: {
-      [articlesFetch.pending]: (state, action) => {
+      [galleriesFetch.pending]: (state, action) => {
         state.status = "pending";
       },
-      [articlesFetch.fulfilled]: (state, action) => {
+      [galleriesFetch.fulfilled]: (state, action) => {
         state.items = action.payload;
         state.status = "success";
       },
-      [articlesFetch.rejected]: (state, action) => {
+      [galleriesFetch.rejected]: (state, action) => {
         state.status = "rejected";
       },
-      [articlesCreate.pending]: (state, action) => {
+      [galleriesCreate.pending]: (state, action) => {
         state.createStatus = "pending";
       },
-      [articlesCreate.fulfilled]: (state, action) => {
+      [galleriesCreate.fulfilled]: (state, action) => {
         state.items.push(action.payload);
         state.createStatus = "success";
-        toast.success("Articles Created");
+        toast.success("Galleries Created");
       },
-      [articlesCreate.rejected]: (state, action) => {
+      [galleriesCreate.rejected]: (state, action) => {
         state.createStatus = "rejected";
       },
-      [articlesEdit.pending]: (state, action) => {
+      [galleriesEdit.pending]: (state, action) => {
         state.editStatus = "pending";
       },
-      [articlesEdit.fulfilled]: (state, action) => { 
-        const updatedArticles = state.items.map((article) =>
-        article._id === action.payload._id ? action.payload : article
+      [galleriesEdit.fulfilled]: (state, action) => { 
+        const updatedGalleries = state.items.map((gallery) =>
+        gallery._id === action.payload._id ? action.payload : gallery
         );  
-        state.items = updatedArticles;
+        state.items = updatedGalleries;
         state.editStatus = "success";
-        toast.info("Articles Edited");
+        toast.info("Gallery Edited");
       },
-      [articlesEdit.rejected]: (state, action) => {
+      [galleriesEdit.rejected]: (state, action) => {
         state.editStatus = "rejected";
       },
-      [articlesDelete.pending]: (state, action) => {
+      [galleriesDelete.pending]: (state, action) => {
         state.deleteStatus = "pending";
       },
-      [articlesDelete.fulfilled]: (state, action) => {
+      [galleriesDelete.fulfilled]: (state, action) => {
         const newList = state.items.filter(
           (item) => item._id !== action.payload._id
         );
         state.items = newList;
         state.deleteStatus = "success";
-        toast.error("Articles Deleted"); // Fix typo here
+        toast.error("Galleries Deleted"); // Fix typo here
       },      
-      [articlesDelete.rejected]: (state, action) => {
+      [galleriesDelete.rejected]: (state, action) => {
         state.deleteStatus = "rejected";
       },
     },
   });
 
-export default articlesSlice.reducer;
+export default galleriesSlice.reducer;
