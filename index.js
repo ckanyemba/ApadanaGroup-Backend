@@ -6,11 +6,12 @@ const login = require("./routes/login");
 const stripe = require("./routes/stripe");
 const productsRoute = require("./routes/products");
 const eventsRoute = require("./routes/events");
+const galleriesRoute = require("./routes/galleries");
 const users = require("./routes/users");
 const orders = require("./routes/orders");
 const products = require("./products");
 const events = require("./events");
-//const articlesRoute = require("./routes/articles")
+const articlesRoute = require("./routes/articles")
 const articles = require("./articles");
 const gallery = require("./gallery");
 const app = express();
@@ -26,9 +27,10 @@ app.use("/api/login", login);
 app.use("/api/stripe", stripe);
 app.use("/api/products", productsRoute);
 app.use("/api/events", eventsRoute);
+app.use("/api/galleries", galleriesRoute);
 app.use("/api/users", users);
 app.use("/api/orders", orders);
-//app.use("/api/articles", articlesRoute);
+app.use("/api/articles", articlesRoute);
 
 app.get("/", (req, res) => {
     res.send("Welcome to our online shop API...");

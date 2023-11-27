@@ -4,7 +4,6 @@ const { isAdmin } = require("../middleware/auth");
 const cloudinary = require("../utils/cloudinary");
 
 const router = express.Router();
-
 //CREATE
 router.post("/", isAdmin, async (req, res) => {
   const { name, brand, desc, price, image } = req.body;
@@ -49,7 +48,7 @@ router.get("/", async (req, res) => {
     res.status(200).json(galleries);
   } catch (error) {
     console.error(error);
-    res.status(500).send("An error occurred while fetching products.");
+    res.status(500).send("An error occurred while fetching gallery.");
   }
 });
 
@@ -98,7 +97,6 @@ router.put("/:id", isAdmin, async (req, res) => {
             $set: {
               ... req.body.gallery,
               image: uploadedResponse,
-              imageP: uploadedResponse,
            },
           },
           { new: true }

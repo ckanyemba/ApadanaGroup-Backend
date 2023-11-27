@@ -50,7 +50,7 @@ router.get("/", async (req, res) => {
     res.status(200).json(events);
   } catch (error) {
     console.error(error);
-    res.status(500).send("An error occurred while fetching products.");
+    res.status(500).send("An error occurred while fetching events.");
   }
 });
 
@@ -93,13 +93,12 @@ router.put("/:id", isAdmin, async (req, res) => {
 
       if(uploadedResponse)
       {
-        const updatedEvent = await Product.findByIdAndUpdate(
+        const updatedEvent = await Event.findByIdAndUpdate(
           req.params.id,
           {
             $set: {
               ... req.body.event,
               image: uploadedResponse,
-              imageP: uploadedResponse,
            },
           },
           { new: true }
