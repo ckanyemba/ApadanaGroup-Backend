@@ -68,23 +68,23 @@ router.get("/find/:id", async (req, res) => {
 
 router.delete("/:id", isAdmin, async (req, res) => {
   try {
-    await Product.findByIdAndDelete(req.params.id);
-    res.status(200).send("Product has been deleted...");
+    await Gallery.findByIdAndDelete(req.params.id);
+    res.status(200).send("Gallery has been deleted...");
   } catch (error) {
     res.status(500).send(error);
   }
 });
 
-// EDIT a product by ID
+// EDIT a gallery by ID
 router.put("/:id", isAdmin, async (req, res) => {
-  if (req.body.productImg) {
+  if (req.body.galleryImg) {
     const destroyResponse = await cloudinary.uploader.destroy(
-      req.body.product.image.public_id,
+      req.body.gallery.image.public_id,
     );
 
     if(destroyResponse) {
       const uploadedResponse = await cloudinary.uploader.upload(
-        req.body.productImg,
+        req.body.galleryImg,
         {
           upload_preset: "apadana-group",
         }
@@ -92,11 +92,11 @@ router.put("/:id", isAdmin, async (req, res) => {
 
       if(uploadedResponse)
       {
-        const updatedProduct = await Product.findByIdAndUpdate(
+        const updatedGallery = await Gallery.findByIdAndUpdate(
           req.params.id,
           {
             $set: {
-              ... req.body.product,
+              ... req.body.gallery,
               image: uploadedResponse,
               imageP: uploadedResponse,
            },
@@ -104,21 +104,21 @@ router.put("/:id", isAdmin, async (req, res) => {
           { new: true }
         );
 
-        res.status(200).send(updatedProduct);
+        res.status(200).send(updatedGallery);
       }
     }
   } else {
     try {
-      const updatedProduct = await Product.findByIdAndUpdate(
+      const updatedGallery = await Gallery.findByIdAndUpdate(
         req.params.id,
         {
-          $set: req.body.product,
+          $set: req.body.gallery,
         },
         {
           new: true
         }
       );
-      res.status(200).send(updatedProduct);
+      res.status(200).send(updatedGallery);
     } catch (err) {
       res.status(500).send(err);
     }
@@ -129,14 +129,14 @@ router.put("/:id", isAdmin, async (req, res) => {
 
 router.put("/:id", isAdmin, async (req, res) => {
   try {
-    const updatedProduct = await Product.findByIdAndUpdate(
+    const updatedGallery = await Gallery.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
       },
       { new: true }
     );
-    res.status(200).send(updatedProduct);
+    res.status(200).send(updatedGallery);
   } catch (error) {
     res.status(500).send(error);
   }
