@@ -50,6 +50,7 @@ const Gallery = () => {
             <ImageContainer>
               <img src={gallery.image?.url} alt="gallery" />
             </ImageContainer>
+            <GalleryDetails>
             <h3>{gallery.name}</h3>
             <p>
               <span>Type:</span>
@@ -72,6 +73,7 @@ const Gallery = () => {
             >
               Add To Cart
             </button>
+            </GalleryDetails>
           </>
         )}
       </GalleryContainer>

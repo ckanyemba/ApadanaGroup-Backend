@@ -78,22 +78,6 @@ const Dashboard = () => {
         >
           <FaNewspaper /> Articles
         </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "link-active" : "link-inactive"
-          }
-          to="/admin/socials"
-        >
-          <FaFacebook /> Socials
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "link-active" : "link-inactive"
-          }
-          to="/admin/calendar"
-        >
-          <FaCalendar /> Calendar
-        </NavLink>
       </SideNav>
       <Content>
         <Outlet />

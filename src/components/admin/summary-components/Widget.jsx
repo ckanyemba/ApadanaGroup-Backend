@@ -4,7 +4,7 @@ const Widget = ({ data }) => {
     
     return (
         <StyledWidget>
-            <Icon color={data.color} bgColor={data.bgColor}>
+            <Icon color={data.color} bgcolor={data.bgcolor}>
                 {data.icon}
             </Icon>
             <Text>
@@ -23,7 +23,7 @@ const Widget = ({ data }) => {
             </> 
             ) : (
             <>
-            <Percentage isPositive = {true}>
+            <Percentage>
                 {Math.floor(data.percentage) + "%"}
             </Percentage>
             </>
@@ -44,7 +44,7 @@ const Icon = styled.div`
     margin-right: 0.5rem;
     padding: 0.5rem;
     color: ${({ color }) => color};
-    background: ${({ bgColor }) => bgColor};
+    background: ${({ bgcolor }) => bgcolor};
     border-radius: 3px;
     font-size: 20px;
 `;
@@ -62,6 +62,5 @@ p{
 const Percentage = styled.div`
     margin-left: 0.5rem;
     font-size: 14px;
-    color: ${({ isPositive }) =>
-        isPositive ? "rgb(114, 225, 40)" : "rgb(255, 77, 73)"};
+    color: ${({ isPositive }) => isPositive ? "rgb(114, 225, 40)" : "rgb(255, 77, 73)"};
 `; 

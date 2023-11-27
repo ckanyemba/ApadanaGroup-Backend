@@ -43,6 +43,7 @@ const Article = () => {
             <ImageContainer>
               <img src={article.image?.url} alt="article" />
             </ImageContainer>
+            <ArticleDetails>
             <h3>{article.name}</h3>
             <p>
               <span>Type:</span>
@@ -61,6 +62,7 @@ const Article = () => {
             >
               Download
             </button>
+            </ArticleDetails>
           </>
         )}
       </ArticleContainer>

@@ -127,7 +127,6 @@ const StyledForm = styled.form`
       border: 2px solid rgb(0, 208, 255);
     }
   }
-
   select {
     color: rgb(95, 95, 95);
   }
@@ -147,9 +146,7 @@ const ImagePreview = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
   color: rgb(78, 78, 78);
-
   img {
     max-width: 100%;
   }

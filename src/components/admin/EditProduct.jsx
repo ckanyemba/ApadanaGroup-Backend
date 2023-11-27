@@ -180,7 +180,7 @@ const StyledForm = styled.form`
     border-radius: 5px;
     border: 1px solid rgb(182, 182, 182);
     margin: 0.3rem 0;
-    &:fous {
+    &:focus {
       border: 2px solid rgb(0, 208, 255);
     }
   }
@@ -191,15 +191,15 @@ const StyledForm = styled.form`
 
 const ImagePreview = styled.div`
   margin: 2rem 0 2rem 2rem;
-  padding: 2rem;
   border: 1px solid rgb(183, 183, 183);
   max-width: 300px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: rgb(78, 78, 78);
+  padding: 2rem;
+  color: rgb(78, 78, 78);
   img {
-    max-width: 100;
+    max-width: 100%;
   }
 `;

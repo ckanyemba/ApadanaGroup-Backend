@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { galleriesCreate, galleriesEdit } from "../../features/galleriesSlice";
 import { PrimaryButton } from "./CommonStyled";
 
-export default function EditGallery({galId}) {
+export default function EditGallery({prodId}) {
   const [open, setOpen] = React.useState(false);
 
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ export default function EditGallery({galId}) {
   const handleClickOpen = () => {
     setOpen(true);
 
-    let selectedGal = items.filter((item) => item._id === galId);
+    let selectedProd = items.filter((item) => item._id === prodId);
 
     selectedProd = selectedProd[0];
 
@@ -190,7 +190,7 @@ const StyledForm = styled.form`
     border-radius: 5px;
     border: 1px solid rgb(182, 182, 182);
     margin: 0.3rem 0;
-    &:fous {
+    &:focus {
       border: 2px solid rgb(0, 208, 255);
     }
   }
@@ -208,8 +208,8 @@ const ImagePreview = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: rgb(78, 78, 78);
+  color: rgb(78, 78, 78);
   img {
-    max-width: 100;
+    max-width: 100%;
   }
 `;

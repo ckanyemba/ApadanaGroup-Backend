@@ -50,6 +50,7 @@ const Product = () => {
             <ImageContainer>
               <img src={product.image?.url} alt="product" />
             </ImageContainer>
+            <ProductDetails>
             <h3>{product.name}</h3>
             <p>
               <span>Brand:</span>
@@ -68,6 +69,7 @@ const Product = () => {
             >
               Add To Cart
             </button>
+            </ProductDetails>
           </>
         )}
       </ProductContainer>

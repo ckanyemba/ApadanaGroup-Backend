@@ -50,6 +50,7 @@ const Event = () => {
             <ImageContainer>
               <img src={event.image?.url} alt="event" />
             </ImageContainer>
+            <EventDetails>
             <h3>{event.name}</h3>
             <p>
               <span>Type:</span>
@@ -72,6 +73,7 @@ const Event = () => {
             >
               Add To Cart
             </button>
+            </EventDetails>
           </>
         )}
       </EventContainer>
