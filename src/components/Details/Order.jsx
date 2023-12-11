@@ -26,7 +26,7 @@ const Order = () => {
       }
     };
 
-    fetchData();
+    fetchOrder();
   }, [params.id]);
 
   return (

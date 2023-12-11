@@ -19,7 +19,7 @@ const NavBar = () => {
           alt="Logo"
           style={{ height: "70px", width: "70px", border: "12px solid #130808"  }} // Adjust the height and width as needed
         />
-        <h2>GOTHRONE</h2>
+        <h2>ApadanaGroup</h2>
         </div>
       <Link to="/">
         <h2>Shop</h2>
